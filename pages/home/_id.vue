@@ -21,13 +21,14 @@
         title: this.home.title,
       }
     },
-    data(){
-      return {
-        home: {}
+    async asyncData({ params, $dataApi, error }) {
+      const response = await $dataApi.getHome(params.id);
+
+      if(!response.ok) {
+        return error({ statusCode: response.status, message: response.statusText });
       }
-    },
-    created(){
-      this.home = homes.find((home) => home.objectID == this.$route.params.id);
+
+      return { home: response.json };
     },
     mounted() {
       this.$maps.showMap(this.$refs.map, this.home._geoloc.lat, this.home._geoloc.lng)

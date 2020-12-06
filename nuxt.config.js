@@ -15,8 +15,10 @@ export default {
   router: {
     prefetchLinks: false
   },
-  plugins: ['~/plugins/maps.client'],
+  plugins: ['~/plugins/maps.client', '~/plugins/dataApi'],
   env: {
-    MAPS_API_KEY: process.env.MAPS_API_KEY
+    MAPS_API_KEY: process.env.MAPS_API_KEY,
+    ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
+    ALGOLIA_API_KEY: process.env.ALGOLIA_API_KEY
   }
 }
