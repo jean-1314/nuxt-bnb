@@ -10,7 +10,7 @@
 
 <script>
 export default {
-name: 'HomeCard',
+  name: 'HomeCard',
   props: {
     home: {
       type: Object,

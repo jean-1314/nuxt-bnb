@@ -1,13 +1,21 @@
 <template>
   <div>
     <div>{{ lat }} / {{ lng }} / {{ label }}</div>
-    <div v-for="home in homes" :key="home.objectID">{{ home.title }}</div>
+    <div v-if="homes.length">
+      <HomeRow v-for="home in homes" :key="home.objectID" :home="home" />
+    </div>
+    <div v-else>No results found</div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'search.vue',
+  head(){
+    return {
+      title: `Homes around ${this.label}`
+    }
+  },
   async beforeRouteUpdate(to, from, next) {
     const data = await this.$dataApi.getHomesByLocation(to.query.lat, to.query.lng);
     this.homes = data.json.hits;
