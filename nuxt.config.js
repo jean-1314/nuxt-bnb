@@ -22,5 +22,12 @@ export default {
     ALGOLIA_API_KEY: process.env.ALGOLIA_API_KEY
   },
   modules: [],
-  buildModules: ['@nuxtjs/tailwindcss']
+  buildModules: ['@nuxtjs/tailwindcss'],
+  css: ['~/assets/sass/app.scss'],
+  build: {
+    extractCSS: true,
+    loaders: {
+      limit: 0
+    }
+  }
 }
