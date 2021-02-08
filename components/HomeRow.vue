@@ -13,25 +13,21 @@
 </template>
 
 <script>
-  export default {
-    name: 'HomeRow',
-    props: {
-      home: {
-        type: Object,
-        default: () => {},
-        required: true
-      },
+import pluralize from '~/utils/pluralize';
+
+export default {
+  name: 'HomeRow',
+  props: {
+    home: {
+      type: Object,
+      default: () => {},
+      required: true
     },
-    methods: {
-      pluralize(number, singularWord) {
-        const text = `${number} ${singularWord}`;
-        if (number === 1) {
-          return text;
-        }
-        return `${text}s`;
-      }
-    }
-  };
+  },
+  methods: {
+    pluralize
+  }
+};
 </script>
 
 <style scoped>
