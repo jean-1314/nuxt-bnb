@@ -15,7 +15,7 @@
       <div class="app-user-menu">
         <img src="/images/icons/house.svg" alt="house icon">
         <div class="name">Host</div>
-        <img src="/images/user.jpg" alt="User avatar" class="avatar">
+        <div id="googleButton"></div>
       </div>
     </header>
     <nuxt/>
