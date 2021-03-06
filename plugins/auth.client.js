@@ -21,6 +21,7 @@ export default ({ $config, store }, inject) => {
       const auth2 = await window.gapi.auth2.init({
         client_id: $config.auth.clientId
       })
+      auth2.currentUser.listen(parseUser);
     });
     window.gapi.signin2.render('googleButton', {
       onsuccess: parseUser,

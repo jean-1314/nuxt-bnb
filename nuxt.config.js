@@ -27,7 +27,7 @@ export default {
       clientId: process.env.GOOGLE_CLIENT_ID
     }
   },
-  modules: [],
+  modules: ['~/modules/auth'],
   buildModules: ['@nuxtjs/tailwindcss'],
   css: ['~/assets/sass/app.scss'],
   build: {
