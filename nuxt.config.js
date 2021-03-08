@@ -25,9 +25,19 @@ export default {
     auth: {
       cookieName: 'idToken',
       clientId: process.env.GOOGLE_CLIENT_ID
+    },
+    algolia:{
+      appId: process.env.ALGOLIA_APP_ID,
+      key: process.env.ALGOLIA_API_KEY,
     }
   },
-  modules: ['~/modules/auth'],
+  privateRuntimeConfig: {
+    algolia: {
+      appId: process.env.ALGOLIA_APP_ID,
+      key: process.env.ALGOLIA_PRIVATE_API_KEY
+    }
+  },
+  modules: ['~/modules/auth', '~/modules/algolia'],
   buildModules: ['@nuxtjs/tailwindcss'],
   css: ['~/assets/sass/app.scss'],
   build: {
