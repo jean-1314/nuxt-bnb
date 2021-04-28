@@ -29,15 +29,24 @@ export default {
     algolia:{
       appId: process.env.ALGOLIA_APP_ID,
       key: process.env.ALGOLIA_API_KEY,
+    },
+    cloudinary:{
+      apiKey: process.env.CLOUDINARY_API_KEY,
     }
   },
   privateRuntimeConfig: {
     algolia: {
       appId: process.env.ALGOLIA_APP_ID,
       key: process.env.ALGOLIA_PRIVATE_API_KEY
+    },
+    cloudinary: {
+      apiSecret: process.env.CLOUDINARY_API_SECRET
     }
   },
-  modules: ['~/modules/auth', '~/modules/algolia'],
+  modules: ['~/modules/auth', '~/modules/algolia', '~/modules/cloudinary', '@nuxtjs/cloudinary'],
+  cloudinary:{
+    cloudName: process.env.CLOUDINARY_CLOUND_NAME,
+  },
   buildModules: ['@nuxtjs/tailwindcss'],
   css: ['~/assets/sass/app.scss'],
   build: {
