@@ -4,6 +4,15 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default (apis) => {
   return async (req, res) => {
+    if (req.method === 'DELETE') {
+      const homeId = req.url.replace(/\//g, '');
+      return await deleteHome(req.identity, homeId, res);
+    }
+
+    if (req.method === 'GET' && req.url === '/user/') {
+      return await getHomesByUser(req.identity.id, res);
+    }
+
     if (req.method === 'POST') {
       if (hasBadBody(req)) {
         return rejectHitBadRequest(res);
@@ -12,6 +21,19 @@ export default (apis) => {
       return;
     }
     rejectHitBadRequest(res);
+  }
+
+  async function deleteHome(identity, homeId, res) {
+    await Promise.all([
+      apis.homes.delete(homeId),
+      apis.user.removeHome(identity, homeId)
+    ])
+    sendJSON({}, res);
+  }
+
+  async function getHomesByUser(userId, res) {
+    const payload = (await apis.homes.getByUserId(userId)).json.hits;
+    sendJSON(payload, res);
   }
 
   async function createHome(identity, body, res) {
@@ -25,9 +47,9 @@ export default (apis) => {
     const resp = await apis.homes.create(homeId, payload);
     if (!resp.ok) {
       res.statusCode = 500;
-      res.send();
+      res.end();
     }
     await apis.user.assignHome(identity, homeId);
-    sendJSON({}, res);
+    sendJSON({ homeId }, res);
   }
 }
