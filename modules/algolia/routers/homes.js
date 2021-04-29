@@ -27,6 +27,7 @@ export default (apis) => {
       res.statusCode = 500;
       res.send();
     }
+    await apis.user.assignHome(identity, homeId);
     sendJSON({}, res);
   }
 }
