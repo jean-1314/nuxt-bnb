@@ -1,7 +1,7 @@
 <template>
   <div>
     {{ home.title }}<br/>
-    <img :src="home.images[0]" :alt="home.title" style="width: 200px;"><br/>
+    <nuxt-img :src="home.images[0]" width="200" height="150" provider="cloudinary" /><br/>
     {{ home.location.address }} {{ home.location.city }} {{ home.location.state }}<br/>
     {{ home.guests }} guests<br/>
     {{ home.pricePerNight }} / night<br/>

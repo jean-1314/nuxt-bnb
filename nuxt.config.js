@@ -47,7 +47,12 @@ export default {
   cloudinary:{
     cloudName: process.env.CLOUDINARY_CLOUND_NAME,
   },
-  buildModules: ['@nuxtjs/tailwindcss'],
+  image: {
+    cloudinary: {
+      baseURL: `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUND_NAME}/image/upload/`
+    }
+  },
+  buildModules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
   css: ['~/assets/sass/app.scss'],
   build: {
     extractCSS: true,

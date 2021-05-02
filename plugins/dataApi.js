@@ -14,7 +14,8 @@ export default function ({ $config }, inject) {
     getHome,
     getReviewsByHomeId,
     getUserByHomeId,
-    getHomesByLocation
+    getHomesByLocation,
+    getHomes
   });
 
   async function getHome(homeId) {
@@ -75,6 +76,21 @@ export default function ({ $config }, inject) {
         })
       );
     } catch(error){
+      return getErrorResponse(error);
+    }
+  }
+
+  async function getHomes() {
+    try {
+      return unWrap(await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/homes/query`, {
+        headers,
+        method: 'POST',
+        body: JSON.stringify({
+          hitsPerPage: 3,
+          attributesToHighlight: [],
+        })
+      }));
+    } catch (error) {
       return getErrorResponse(error);
     }
   }
