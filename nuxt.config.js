@@ -37,7 +37,10 @@ export default {
     },
     cloudinary:{
       apiKey: process.env.CLOUDINARY_API_KEY,
-    }
+    },
+    stripe:{
+      key: "pk_test_6tXMtSjMOSUVliHA425Z9ztp00Pt9PZ2qm",
+    },
   },
   privateRuntimeConfig: {
     algolia: {
@@ -46,6 +49,9 @@ export default {
     },
     cloudinary: {
       apiSecret: process.env.CLOUDINARY_API_SECRET
+    },
+    stripe: {
+      secretKey: process.env.STRIPE_SECRET_KEY
     }
   },
   modules: ['~/modules/auth', '~/modules/algolia', '~/modules/cloudinary', '@nuxtjs/cloudinary'],
