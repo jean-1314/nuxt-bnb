@@ -39,7 +39,7 @@ export default {
       apiKey: process.env.CLOUDINARY_API_KEY,
     },
     stripe:{
-      key: "pk_test_6tXMtSjMOSUVliHA425Z9ztp00Pt9PZ2qm",
+      key: process.env.STRIPE_KEY,
     },
   },
   privateRuntimeConfig: {
