@@ -1,7 +1,7 @@
 'use strict';
 
 import stripeLib from 'stripe';
-import getApis from './apis';
+import getApis from '../algolia/apis'
 import { rejectHitBadRequest, sendJSON  } from '../helpers';
 
 export default function() {

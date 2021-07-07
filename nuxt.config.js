@@ -19,7 +19,8 @@ export default {
     '~/plugins/maps.client',
     '~/plugins/dataApi',
     '~/plugins/auth.client',
-    '~/plugins/vCalendar.client'
+    '~/plugins/vCalendar.client',
+    '~/plugins/stripe.client',
   ],
   env: {
     MAPS_API_KEY: process.env.MAPS_API_KEY,
@@ -54,7 +55,13 @@ export default {
       secretKey: process.env.STRIPE_SECRET_KEY
     }
   },
-  modules: ['~/modules/auth', '~/modules/algolia', '~/modules/cloudinary', '@nuxtjs/cloudinary'],
+  modules: [
+    '~/modules/auth',
+    '~/modules/algolia',
+    '~/modules/cloudinary',
+    '@nuxtjs/cloudinary',
+    '~/modules/stripe',
+  ],
   cloudinary:{
     cloudName: process.env.CLOUDINARY_CLOUND_NAME,
   },
